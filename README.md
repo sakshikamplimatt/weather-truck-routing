@@ -72,8 +72,10 @@ If every route has No Travel miles the app says so and suggests delaying.
 ### Heatmap
 `/api/plan` returns corridor sample points (along every route every ~30 mi, plus a point 20 mi to
 each side). `/api/heatmap` returns the risk level for each point for each of the next 49 hours in one
-response, so dragging the slider is purely client-side (`setLatLngs` on a single canvas heat layer)
-and needs no network. Hour 0 is the current hour; load weight is applied to the levels.
+response,and needs no network. The overlay is one translucent circle per sample point, coloured by that 
+point's risk level (so colour always matches the route cards), drawn on its own blurred canvas pane; 
+moving the slider only restyles the existing circles. Hour 0 is the current hour; load weight is applied
+to the levels.
 
 ## Known limitations
 - OSRM's public server uses a **car** profile: no truck restrictions (height, weight, hazmat).
