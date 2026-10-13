@@ -7,6 +7,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-only-insecure-key")
 DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
+   SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
 INSTALLED_APPS = ["corsheaders", "routing"]
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
