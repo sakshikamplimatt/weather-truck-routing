@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: weather-truck-routing
+    runtime: python
+    buildCommand: ./build.sh
+    startCommand: cd backend && gunicorn config.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "0"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "*"
+      - key: NODE_VERSION
+        value: "20"
